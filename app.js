@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const PORT = 3000;
@@ -10,6 +11,9 @@ const counterFilePath = path.join('./', 'counter.json')
 
 // Middleware 설정
 app.use(bodyParser.json());
+
+// cors 설정
+app.use(cors({ origin: '*' }));
 
 // todo.json 파일에서 데이터 로드 함수
 const loadTodoData = () => {
